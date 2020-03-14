@@ -14,10 +14,6 @@ def index(request):
 	context = {"student_list": student_list,}
 	return render(request, 'student/index.html', context)
 
-def detail(request, student_id):
-	student = get_object_or_404(Student, pk=student_id)
-	return render(request, 'student/detail.html', {'student': student})
-
 def add(request):
 	return render(request, 'student/add.html')
 
