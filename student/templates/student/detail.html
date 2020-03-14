@@ -1,0 +1,18 @@
+{% extends 'student/base.html' %}
+{% block content %}
+	<div id="person">
+		<div id="name"><div class="label">Name:</div>&nbsp;{{student.first_name}} {{student.last_name}}</div>
+		<div id="class"><div class="label">Class:</div>&nbsp;{{student.school_year}}</div>
+		<div id="gender"><div class="label">Gender:</div>&nbsp;{{student.gender}}</div>
+		<div id="family"><div class="label">Family Group:</div>&nbsp;{{student.color}}</div>
+		<div id="prospect"><div class="label">Prospect?</div>&nbsp;{{student.prospect}}</div>
+		<div id="phone"><div class="label">Phone:</div>&nbsp;{{student.phone}}</div>
+		<div id="email"><div class="label">Email:</div>&nbsp;{{student.email}}</div>
+		<div id="info_card"><div class="label">Info Card?</div>&nbsp;{{student.info_card}}</div>
+		<div id="schoolAddress"><div class="label">Local Address:</div>&nbsp;{{student.local_street_num}} {{student.local_street}}</div>
+		<div id="homeAddress"><div class="label">Home Address:</div>&nbsp;{{student.perm_street_num}} {{student.perm_street}} {{perm_city}}, {{perm_state}} {{perm_zip}}</div>
+		<div id="major"><div class="label">Major:</div>&nbsp;{{student.major}}</div>
+		<div id="church"><div class="label">Church:</div>&nbsp;{{student.church}}</div>
+		<div id="other"><div class="label">Notes:</div>&nbsp;{{student.other}}</div>
+	</div>
+{% endblock %}

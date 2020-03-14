@@ -1,0 +1,35 @@
+{% extends 'student/base.html' %}
+
+{% block content %}
+{% if student_list %}
+	<h4> {{student_list|length}} results</h4>
+	<div id="directory">
+		<table>
+			<tr>
+				<th colspan="2">Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>School Address</th>
+				<th>Color</th>
+				<th>Class</th>
+			</tr>
+
+				{% for student in student_list %}
+					{% if forloop.counter|divisibleby:2 %}<tr onclick="DoNav('{% url 'student:detail' student.id %}');">
+					{% else %}<tr class='shaded' onclick="DoNav('{% url 'student:detail' student.id %}');">
+					{% endif %}
+						<td>{{student.first_name}}</td>
+						<td>{{student.last_name}}</td>
+						<td>{{student.email}}</td>
+						<td>{{student.phone}}</td>
+						<td>{{student.local_street_num}} {{student.local_street}}</td>
+						<td>{{student.color}}</td>
+						<td>{{student.school_year}}</td>
+					</tr>
+				{% endfor %}
+		</table>
+	</div>
+{% else %}
+	<p>No students</p>
+{% endif %}
+{% endblock %}

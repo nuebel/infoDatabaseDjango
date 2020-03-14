@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+<head>
+	<link href="{% static 'student/directory.css' %}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		function DoNav(theUrl) {
+			document.location.href = theUrl;
+		}
+	</script>
+</head>
+<body>
+<div id="title">
+	<h1>Student Database</h1>
+</div>
+<div class="clearing"></div>
+<div id="content" class="page">
+	<div id="left">
+		{% block content %}
+		{% endblock %}
+	</div>
+	<div id="right">
+		<div class="rightBlock">
+			<h3>Search the database</h3>
+		</div>
+		<div class="rightBlock">
+				<h3>Add a Student</h3>
+			<button type="button" onClick="DoNav('{% url 'student:add' %}')">Add Student</button>
+		</div>
+		<div class="rightBlock">
+			<h3>Links</h3>
+			<a href="{% url 'student:index' %}">Home</a><br/>
+		</div>
+	</div>
+</body>
+</html>

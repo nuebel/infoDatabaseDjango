@@ -1,0 +1,587 @@
+body {
+
+	color: #000;
+
+	font-family: Calibri, "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	/*verdana, arial, helvetica, sans-serif;*/
+
+	font-size: 80%;/* font sizing in ems, baby. if you want to change anything, just change this.*/
+
+	margin: 10px 10px 10px 20px;
+
+	padding: 0;
+
+}
+
+
+
+
+
+.clearing {
+
+	clear: both;
+
+	font-size: 0;
+
+	height: 0;
+
+}
+
+		
+
+/*typography*/
+
+a {
+
+	text-decoration: none;
+
+	color: #ff6600;
+
+}
+
+
+
+a:link {
+
+}
+
+
+
+a:visited {
+
+}
+
+
+
+a:active {
+
+}
+
+
+
+a:hover {
+
+	text-decoration: underline;
+
+}
+
+
+
+h1, h2, h3, h4, h5, h6, h7 {
+
+	font-weight: bolder;
+
+	margin: 1em 0 0 0;
+
+	font-size: 1.0em;
+
+	padding: 0;
+
+	line-height: 1em;
+
+}
+
+
+
+h1 {
+
+	font-size: 2.5em;
+
+	font-weight: normal;
+
+	margin-top: 0em;
+
+	margin-bottom: 0em;
+
+	text-transform: uppercase;
+
+}
+
+
+
+h2 {
+
+	font-size: 1.4em;
+
+	color: #333;
+
+}
+
+
+
+h3 {
+
+	font-size: 1.3em;
+
+	margin: 1em 0em 0.3em 0;
+
+	text-transform: uppercase;
+
+	padding-bottom: 0.2em;
+
+	border-bottom: 1px solid #333;
+
+}
+
+#right h3 {
+
+	padding: 0;
+
+	border: 0;
+
+	font-size: 1.1em;
+
+}
+
+h4 {
+    margin: 0 0 0.5em 0;
+}
+
+
+
+img {
+
+	border: 0;
+
+}
+
+
+
+ol, ul, li {
+
+	font-size: 1.0em;
+
+	line-height: 1.6em;
+
+	margin-top: 0.2em;
+
+	margin-bottom: 0.1em; 
+
+}
+
+
+
+p {
+
+	font-size: 1.0em;
+
+	line-height: 1.6em;
+
+	margin: 0.4em 0 1.2em 0;
+
+	padding: 0;
+
+}
+
+
+
+pre {
+
+	font-family: monospace;
+
+	font-size: 1.0em;
+
+}
+
+
+
+small {
+
+	font-size: 0.9em;
+
+}
+
+
+
+strong, b {
+
+	font-weight: bold;
+
+}
+
+
+#title {
+	height: 50px;
+}
+
+
+
+
+#content {
+
+	margin-left: auto;
+
+	margin-right: auto;
+
+	width: 1000px;
+
+}
+
+
+#content #left {
+
+	float: left;
+
+	padding: 7px 7px 7px 0;
+
+	text-align: justify;
+
+	width: 793px;
+
+}
+
+
+
+#content #right {
+
+	float: right;
+
+	padding: 7px 0 7px 22px;
+
+	width: 177px;
+
+}
+
+#content #right ul, #content #right ul * {
+
+		margin: 0;
+
+		padding: 0;
+
+		list-style: none;
+
+}
+
+
+
+
+
+
+#dbFrame {
+    width: 800px;
+    height: 375px;
+}
+
+.rightBlock {
+    margin: 0 0 20px 0;
+}
+
+#searchFor {
+    clear: both;
+    float: left;
+}
+
+#searchIn {
+    clear: both;
+    float: left;
+}
+
+#searchText {
+    width: 100px;
+}
+
+
+
+
+#directory table, th, td {
+    font-size: 85%;
+    border: 1px solid gray;
+    padding: 2px 6px 2px 6px;
+    margin: 0px;
+    border-collapse: collapse;
+}
+
+#directory table {
+    width: 700px;
+    margin-bottom: 5px;
+}
+
+#directory tr:hover {
+    background: #AAA;
+    cursor: pointer;
+}
+
+#directory th {
+    background: #333;
+    color: #FFF;
+}
+
+#directory .shaded {
+    background: #666;
+    color: #FFF;
+}
+
+#dirNoLink table, th, td {
+    font-size: 85%;
+    border: 1px solid gray;
+    padding: 2px 6px 2px 6px;
+    margin: 0px;
+    border-collapse: collapse;
+}
+
+#dirNoLink th {
+    background: #333;
+    color: #FFF;
+}
+
+#dirNoLink .shaded {
+    background: #666;
+    color: #FFF;
+}
+
+#person {
+    font-size: 1.2em;
+    margin-top: 10px;
+    /*height: 270px;*/
+}
+
+#person .label {
+    font-weight: bold;
+    float: left;
+}
+
+#person fieldset {
+    clear: both;
+    float: left;
+    width: 95%;
+}
+
+#person fieldset legend {
+    font-weight: bold;
+}
+
+#person #name {
+    float: left;
+    width: 70%;
+}
+
+#person #first_name {
+    float: left;
+    width: 35%;
+}
+
+#person #first_name input {
+    width: 90px;
+}
+
+#person #last_name {
+    float: left;
+    width: 35%;
+}
+
+#person #last_name input {
+    width: 90px;
+}
+
+#person #class {
+    float: left;
+    width: 30%;
+}
+
+#person #gender {
+    clear: both;
+    float: left;
+    width: 33%;
+}
+
+#person #family {
+    float: left;
+    width: 45%;
+}
+
+
+#person #prospect {
+    float: left;
+    width: 22%;
+}
+
+#person #phone {
+    clear: both;
+    float: left;
+    width: 33%;
+}
+
+#person #phone input {
+    width: 90px;
+}
+
+#person #email {
+    float: left;
+    width: 45%;
+}
+
+#person #info_card {
+    float: left;
+    width: 22%;
+}
+
+#person #schoolAddress {
+    clear: both;
+    float: left;
+}
+
+#person #on_campus {
+    clear: both;
+    float: left;
+}
+
+#person #streetNum_local {
+    clear: both;
+    float: left;
+    width: 50%;
+}
+
+#person #streetNum_local input {
+    width: 50px;
+}
+
+#person #street_local {
+    float: left;
+    width: 50%;
+}
+
+#person #street_local input {
+    width: 180px;
+}
+
+#person #homeAddress {
+    clear: both;
+    float: left;
+}
+
+#person #street_perm {
+    clear: both;
+    float: left;
+}
+
+#person #street_perm input {
+    width: 250px;
+}
+
+#person #city_perm {
+    clear: both;
+    float: left;
+    width: 50%;
+}
+
+#person #state_perm {
+    float: left;
+    width: 20%;
+}
+
+#person #state_perm input {
+    width: 35px;
+}
+
+#person #zip_perm {
+    float: left;
+    width: 30%;
+}
+
+#person #zip_perm input {
+    width: 90px;
+}
+
+#person #major {
+    clear: both;
+    float: left;
+    width: 50%;
+}
+
+#person #church {
+    clear: both;
+    float: left;
+}
+
+#person #other {
+    clear: both;
+    float: left;
+}
+
+#person #other input {
+    width: 470px;
+}
+
+#person #bsAttendance {
+    clear: both;
+}
+
+#person #bsAttendance table {
+    clear: both;
+}
+
+#personButtons {
+    clear: both;
+    float: left;
+}
+
+#options {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 40px;
+}
+
+#options li {
+    margin: 0;
+    line-height: 1.2em;
+}
+
+#operationFriendship {
+    clear: both;
+    float: left;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+#operationFriendship .label {
+    font-weight: bold;
+    float: left;
+}
+
+#operationFriendship input {
+    float: left;
+}
+
+#ofButtons {
+    clear: both;
+    float: left;
+}
+
+#of_sort {
+    margin: 2px;
+}
+
+#on_campus_stats {
+    float: left;
+}
+
+#all_stats {
+    float: left;
+    margin-left: 20px;
+}
+
+#bs_stats {
+    clear: both;
+    float: left;
+    margin-top: 10px;
+}
+
+#bs_stats tr:hover {
+    background: #FFF;
+    cursor: default;
+}
+
+#family {
+    float: left;
+}
+
+#semester {
+    float: left;
+    margin-left: 20px;
+}
+
+#week {
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
