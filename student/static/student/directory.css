@@ -1,202 +1,105 @@
 body {
-
 	color: #000;
-
 	font-family: Calibri, "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 	/*verdana, arial, helvetica, sans-serif;*/
-
-	font-size: 80%;/* font sizing in ems, baby. if you want to change anything, just change this.*/
-
+	font-size: 80%;
 	margin: 10px 10px 10px 20px;
-
 	padding: 0;
-
 }
-
-
-
-
 
 .clearing {
-
 	clear: both;
-
 	font-size: 0;
-
 	height: 0;
-
 }
-
 		
 
 /*typography*/
 
 a {
-
 	text-decoration: none;
-
 	color: #ff6600;
-
 }
-
-
-
-a:link {
-
-}
-
-
-
-a:visited {
-
-}
-
-
-
-a:active {
-
-}
-
-
 
 a:hover {
-
 	text-decoration: underline;
-
 }
 
-
+a.current {
+    font-weight: bold;
+    color: #444;
+    pointer-events: none;
+}
 
 h1, h2, h3, h4, h5, h6, h7 {
-
 	font-weight: bolder;
-
 	margin: 1em 0 0 0;
-
 	font-size: 1.0em;
-
 	padding: 0;
-
 	line-height: 1em;
-
 }
-
-
 
 h1 {
-
 	font-size: 2.5em;
-
 	font-weight: normal;
-
 	margin-top: 0em;
-
 	margin-bottom: 0em;
-
 	text-transform: uppercase;
-
 }
-
-
 
 h2 {
-
 	font-size: 1.4em;
-
 	color: #333;
-
 }
 
-
-
 h3 {
-
 	font-size: 1.3em;
-
 	margin: 1em 0em 0.3em 0;
-
 	text-transform: uppercase;
-
 	padding-bottom: 0.2em;
-
 	border-bottom: 1px solid #333;
-
 }
 
 #right h3 {
-
 	padding: 0;
-
 	border: 0;
-
 	font-size: 1.1em;
-
 }
 
 h4 {
     margin: 0 0 0.5em 0;
 }
 
-
-
 img {
-
 	border: 0;
-
 }
-
-
 
 ol, ul, li {
-
 	font-size: 1.0em;
-
 	line-height: 1.6em;
-
 	margin-top: 0.2em;
-
 	margin-bottom: 0.1em; 
-
 }
-
-
 
 p {
-
 	font-size: 1.0em;
-
 	line-height: 1.6em;
-
 	margin: 0.4em 0 1.2em 0;
-
 	padding: 0;
-
 }
-
-
 
 pre {
-
 	font-family: monospace;
-
 	font-size: 1.0em;
-
 }
-
 
 
 small {
-
 	font-size: 0.9em;
-
 }
 
-
-
 strong, b {
-
 	font-weight: bold;
-
 }
 
 
@@ -204,58 +107,30 @@ strong, b {
 	height: 50px;
 }
 
-
-
-
 #content {
-
 	margin-left: auto;
-
 	margin-right: auto;
-
 	width: 1000px;
-
 }
-
 
 #content #left {
-
 	float: left;
-
 	padding: 7px 7px 7px 0;
-
 	text-align: justify;
-
 	width: 793px;
-
 }
 
-
-
 #content #right {
-
 	float: right;
-
 	padding: 7px 0 7px 22px;
-
 	width: 177px;
-
 }
 
 #content #right ul, #content #right ul * {
-
 		margin: 0;
-
 		padding: 0;
-
 		list-style: none;
-
 }
-
-
-
-
-
 
 #dbFrame {
     width: 800px;
@@ -279,9 +154,6 @@ strong, b {
 #searchText {
     width: 100px;
 }
-
-
-
 
 #directory table, th, td {
     font-size: 85%;
@@ -332,7 +204,6 @@ strong, b {
 #person {
     font-size: 1.2em;
     margin-top: 10px;
-    /*height: 270px;*/
 }
 
 #person .label {
@@ -388,7 +259,6 @@ strong, b {
     float: left;
     width: 45%;
 }
-
 
 #person #prospect {
     float: left;
