@@ -1,3 +1,7 @@
+function confirmDelete() {
+	return confirm("Are you sure you want to delete this person from the database?");
+}
+
 $(document).ready(function() {
 
 $(".sorter").click( function(event) {
@@ -32,3 +36,4 @@ $(".sorter").click( function(event) {
 });
 
 });
+
