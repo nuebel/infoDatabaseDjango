@@ -15,4 +15,10 @@
 		<div id="church"><div class="label">Church:</div>&nbsp;{{student.church}}</div>
 		<div id="other"><div class="label">Notes:</div>&nbsp;{{student.other}}</div>
 	</div>
+	<div class="clearing"></div>
+	<ul id="options">
+		<!-- <li><a href="dbSearch.php?back=true">Back to List</a></li> -->
+		<li><a href="{% url 'student:edit' student.id %}">Edit This Person's Information</a></li>
+		<li><a onclick="return confirmDelete();" href="{% url 'student:delete' student.id %}">Delete This Person</a></li>
+	</ul>
 {% endblock %}

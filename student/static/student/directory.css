@@ -117,7 +117,12 @@ strong, b {
 	float: left;
 	padding: 7px 7px 7px 0;
 	text-align: justify;
-	width: 793px;
+    width: 793px;
+    max-height: 375px;
+}
+
+#sort_links {
+    margin-top: 20px;
 }
 
 #content #right {

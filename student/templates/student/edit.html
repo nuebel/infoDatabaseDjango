@@ -1,0 +1,61 @@
+{% extends 'student/base.html' %}
+{% block content %}
+		<h2>Edit Student</h2>
+		<form name="editForm" action="{% url 'student:makeEdits' %}" method="post">
+		{% csrf_token %}
+		<div id="person">
+			<div id="first_name"><div class="label">First Name:</div>&nbsp;<input name="first_name" type="text" maxlength="32" value="{{ student.first_name }}"/></div>
+			<div id="last_name"><div class="label">Last Name:</div>&nbsp;<input name="last_name" type="text" maxlength="32" value="{{ student.last_name }}"/></div>
+			<div id="class"><div class="label">Class:</div> &nbsp;
+				<select name="school_year">
+					<option value="FR" {% if student.school_year == 'FR' %} selected="yes" {% endif %}>Freshman</option>
+					<option value="SO"{% if student.school_year == 'SO' %} selected="yes" {% endif %}>Sophomore</option>
+					<option value="JR" {% if student.school_year == 'JR' %} selected="yes" {% endif %}>Junior</option>
+					<option value="SR" {% if student.school_year == 'SR' %} selected="yes" {% endif %}>Senior</option>
+					<option value="GR" {% if student.school_year == 'GR' %} selected="yes" {% endif %}>Grad Student</option>
+				</select>
+			</div>
+			<div id="gender"><div class="label">Gender:</div> &nbsp;
+				<select name="gender">
+					<option value="M" {% if student.gender == 'M' %} selected="yes" {% endif %}>Male</option>
+					<option value="F" {% if student.gender == 'F' %} selected="yes" {% endif %}>Female</option>
+				</select>
+			</div>
+			<div id="family"><div class="label">Family Group:</div> &nbsp;
+				<select name="color">
+					<option value="none" {% if student.color == 'none' %} selected="yes" {% endif %}>[No Family]</option>
+					<option value="blue" {% if student.color == 'blue' %} selected="yes" {% endif %}>Blue</option>
+					<option value="brown" {% if student.color == 'brown' %} selected="yes" {% endif %}>Brown</option>
+					<option value="gold" {% if student.color == 'gold' %} selected="yes" {% endif %}>Gold</option>
+					<option value="green" {% if student.color == 'green' %} selected="yes" {% endif %}>Green</option>
+					<option value="maroon" {% if student.color == 'maroon' %} selected="yes" {% endif %}>Maroon</option>
+					<option value="orange" {% if student.color == 'orange' %} selected="yes" {% endif %}>Orange</option>
+					<option value="purple" {% if student.color == 'purple' %} selected="yes" {% endif %}>Purple</option>
+					<option value="red" {% if student.color == 'red' %} selected="yes" {% endif %}>Red</option>
+					<option value="silver" {% if student.color == 'silver' %} selected="yes" {% endif %}>Silver</option>
+					<option value="yellow" {% if student.color == 'yellow' %} selected="yes" {% endif %}>Yellow</option>
+				</select>
+			</div>
+			<div id="prospect"><div class="label">Prospect?</div>&nbsp;<input name="prospect" type="checkbox" value="true" {% if student.prospet == True %} checked {% endif %}/></div>
+			<div id="phone"><div class="label">Phone:</div>&nbsp;<input name="phone" type="text" maxlength="12" value="{{ student.phone }}"/></div>
+			<div id="email"><div class="label">Email:</div>&nbsp;<input name="email" type="text" maxlength="32" value="{{ student.email }}"/></div>
+			<div id="info_card"><div class="label">Info Card?</div>&nbsp;<input name="info_card" type="checkbox" value="true" {% if student.info_card == True %} checked {% endif %}/></div>
+			<fieldset>
+				<legend>Local Address</legend>
+			</fieldset>
+
+			<fieldset>
+				<legend>Home Address</legend>
+			</fieldset>
+
+			<div id="major"><div class="label">Major:</div>&nbsp;<input name="major" type="text" maxlength="32" value="{{ student.major }}"/></div>
+			<div id="church"><div class="label">Church:</div>&nbsp;<input name="church" type="text" maxlength="64" value="{{ student.church }}"/></div>
+			<div id="other"><div class="label">Notes:</div>&nbsp;<input name="other" type="text" maxlength="254" value="{{ student.other }}"/></div>
+		</div>
+		<input type="hidden" name="id" value="{{ student.id }}"/>
+		<div id="personButtons">
+			<input type="submit" value="Update Student">
+			<button type="button" onClick="DoNav('{% url 'student:detail' student.id %}');">Cancel</button>
+		</div>
+		</form>
+{% endblock %}
