@@ -7,6 +7,9 @@
 			document.location.href = theUrl;
 		}
 	</script>
+	<script src="{% static "student/js/jquery-3.4.1.js" %}"></script>
+	<script src="{% static "student/js/directory.js" %}"></script>
+	<title>Student Information Database</title>
 </head>
 <body>
 <div id="title">
@@ -17,10 +20,35 @@
 	<div id="left">
 		{% block content %}
 		{% endblock %}
+		<div id="sort_links">
+			Sort by:&nbsp;
+        	<a href="#" class="sorter" id="sorter_lastname">Last Name</a>
+        	&nbsp;|&nbsp;<a href="#" class="sorter" id="sorter_firstname">First Name</a>
+        	&nbsp;|&nbsp;<a href="#" class="sorter" id="sorter_schoolyear">Class</a>
+        	&nbsp;|&nbsp;<a href="#" class="sorter" id="sorter_color">Family Group</a>
+			&nbsp;|&nbsp;<a href="#" class="sorter" id="sorter_address">Address</a>
+		</div>
 	</div>
 	<div id="right">
 		<div class="rightBlock">
 			<h3>Search the database</h3>
+			<form name="searchForm" action="{% url 'student:search' %}" method="post">
+				{% csrf_token %}
+				<div id="searchFor">For:&nbsp;<input type="text" name="search_text" id="search_text"/></div>
+                        <div id="searchIn">In:&nbsp<select name="search_field" id="search_field">
+                            <option value="last_name">Last Name</option>
+                            <option value="first_name">First Name</option>
+                            <option value="email">Email</option>
+                            <option value="color">Family Group</option>
+                            <option value="school_year">Class</option>
+                            <option value="dorm">Dorm</option>
+                            <option value="homeAdd">Home Address</option>
+                            <option value="major">Major</option>
+                            <option value="church">Church</option>
+                            <option value="other">Notes</option>
+                        </select></div>
+				<input type="submit" value="Search">
+			</form>
 		</div>
 		<div class="rightBlock">
 				<h3>Add a Student</h3>
