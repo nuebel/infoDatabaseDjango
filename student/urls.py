@@ -8,4 +8,6 @@ urlpatterns = [
 	path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 	path('add', views.add, name='add'),
 	path('addNew', views.addNew, name='addNew'),
+	path('search', views.search, name='search'),
+	path('ajax_searchsort', views.ajax_searchsort, name='ajax_searchsort'),
 ]
