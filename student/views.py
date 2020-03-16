@@ -44,6 +44,44 @@ def addNew(request):
 
 	return HttpResponseRedirect(reverse('student:detail', args=(student.id,)))
 
+def edit(request, pk):
+	student = get_object_or_404(Student, pk=pk)
+	context = {"student": student,}
+	return render(request, 'student/edit.html', context)
+
+def makeEdits(request):
+	# Translate checkbox values to python booleans
+	if request.POST.get('prospect') == 'true': prospect = True
+	else: prospect = False
+	if request.POST.get('info_card') == 'true': info_card = True
+	else: info_card = False
+
+	student = Student.objects.get(pk=request.POST['id'])
+	student.first_name=request.POST['first_name']
+	student.last_name=request.POST['last_name']
+	student.school_year=request.POST['school_year']
+	student.gender=request.POST['gender']
+	student.color=request.POST['color']
+	student.prospect=prospect
+	student.phone=request.POST['phone']
+	student.email=request.POST['email']
+	student.info_card=info_card
+	student.major=request.POST['major']
+	student.church=request.POST['church']
+	student.other=request.POST['other']
+
+	student.save()
+
+	return HttpResponseRedirect(reverse('student:detail', args=(student.id,)))
+
+def delete(request, pk):
+	student = get_object_or_404(Student, pk=pk)
+	student.delete()
+
+	student_list = Student.objects.order_by('last_name', 'first_name')
+	context = {"student_list": student_list,}
+	return render(request, 'student/index.html', context)
+
 def search(request):
 	search_by = request.POST['search_field']
 	search_text = request.POST['search_text']
