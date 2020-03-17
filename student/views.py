@@ -11,8 +11,36 @@ class DetailView(generic.DetailView):
 	template_name = 'student/detail.html'
 
 def index(request):
-	student_list = Student.objects.order_by('last_name', 'first_name')
-	context = {"student_list": student_list,}
+	# Set session search parameters to default
+	request.session['search_field'] = 'last_name'
+	request.session['search_text'] = ''
+
+	# Set session sort column to last name if not already set
+	if 'sort_by' not in request.session: request.session['sort_by'] = 'last_name'
+	
+	message = "All students - "
+
+	if request.session['sort_by'] == 'last_name':
+		sort_by_list = ['last_name', 'first_name']
+		message += 'Sorted by Last Name'
+	elif request.session['sort_by'] == 'first_name':
+		sort_by_list = ['first_name', 'last_name']
+		message += 'Sorted by First Name'
+	elif request.session['sort_by'] == 'school_year':
+		sort_by_list = ['school_year', 'last_name', 'first_name']
+		message += 'Sorted by Class'
+	elif request.session['sort_by'] == 'color':
+		sort_by_list = ['color', 'last_name', 'first_name']
+		message += 'Sorted by Family Group'
+	elif request.session['sort_by'] == 'address':
+		sort_by_list = ['last_name', 'first_name']
+		message += 'Sorted by Address (not implemented yet)'
+
+	student_list = Student.objects.order_by(*sort_by_list)
+	context = {
+		"student_list": student_list,
+		"message": message,
+		}
 	return render(request, 'student/index.html', context)
 
 def add(request):
@@ -86,38 +114,59 @@ def search(request):
 	search_by = request.POST['search_field']
 	search_text = request.POST['search_text']
 	logger = logging.getLogger('django')
-	logger.info('In search')
+	logger.info('Searching for ' + search_text + ' in ' + search_by)
+
+	# Save search parameters to sesion
+	request.session['search_field'] = search_by
+	request.session['search_text'] = search_text
+
+	sort_by = request.session['sort_by']
+	if sort_by == 'last_name':
+		sort_by_list = ['last_name', 'first_name']
+		message = 'Sorted by Last Name'
+	elif sort_by == 'first_name':
+		sort_by_list = ['first_name', 'last_name']
+		message = 'Sorted by First Name'
+	elif sort_by == 'school_year':
+		sort_by_list = ['school_year', 'last_name', 'first_name']
+		message = 'Sorted by Class'
+	elif sort_by == 'color':
+		sort_by_list = ['color', 'last_name', 'first_name']
+		message = 'Sorted by Family Group'
+	elif sort_by == 'address':
+		sort_by_list = ['last_name', 'first_name']
+		message = 'Sorted by Address (not implemented yet)'
 
 	if search_by =='last_name':
-		student_list = Student.objects.filter(last_name__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students with last name ' + search_text
+		student_list = Student.objects.filter(last_name__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students with last name ' + search_text + ' - ' + message
 	elif search_by == 'first_name':
-		student_list = Student.objects.filter(first_name__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students with first name ' + search_text
+		student_list = Student.objects.filter(first_name__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students with first name ' + search_text  + ' - ' + message
 	elif search_by == 'email':
-		student_list = Student.objects.filter(email__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students with email ' + search_text
+		student_list = Student.objects.filter(email__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students with email ' + search_text  + ' - ' + message
 	elif search_by == 'color':
-		student_list = Student.objects.filter(color__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students in ' + search_text + ' family'
+		student_list = Student.objects.filter(color__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students in ' + search_text + ' family - ' + message
 	elif search_by == 'school_year':
-		student_list = Student.objects.filter(school_year__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students in class ' + search_text
+		student_list = Student.objects.filter(school_year__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students in class ' + search_text  + ' - ' + message
 	elif search_by == 'dorm':
-		student_list = Student.objects.filter(last_name__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students with last name ' + search_text
+		student_list = Student.objects.filter(last_name__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students with last name ' + search_text  + ' - ' + message
 	elif search_by == 'homeAdd':
-		student_list = Student.objects.filter(last_name__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students with last name ' + search_text
+		student_list = Student.objects.filter(last_name__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students with last name ' + search_text  + ' - ' + message
 	elif search_by == 'major':
-		student_list = Student.objects.filter(major__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students with major ' + search_text
+		student_list = Student.objects.filter(major__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students with major ' + search_text  + ' - ' + message
 	elif search_by == 'church':
-		student_list = Student.objects.filter(church__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students with church ' + search_text
+		student_list = Student.objects.filter(church__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students with church ' + search_text  + ' - ' + message
 	elif search_by == 'other':
-		student_list = Student.objects.filter(other__icontains = search_text).order_by('last_name', 'first_name')
-		message = 'Search for students with notes ' + search_text
+		student_list = Student.objects.filter(other__icontains = search_text).order_by(*sort_by_list)
+		message = 'Search for students with notes ' + search_text  + ' - ' + message
 	else:
 		message = 'No search field specified'
 
@@ -131,10 +180,13 @@ def search(request):
 def ajax_searchsort(request):
 	logger = logging.getLogger('django')
 
-	search_by = request.GET['search_field']
-	search_text = request.GET['search_text']
+	search_by = request.session['search_field']
+	search_text = request.session['search_text']
 	sort_by = request.GET['sort_by']
 	logger.info('Searching for ' + search_text + ' in ' + search_by + ' sorted by ' + sort_by)
+
+	# Save sort column to the session
+	request.session['sort_by'] = sort_by
 
 	if sort_by == 'last_name':
 		sort_by_list = ['last_name', 'first_name']
