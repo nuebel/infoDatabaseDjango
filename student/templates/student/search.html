@@ -1,9 +1,9 @@
 {% extends 'student/base.html' %}
 
 {% block content %}
-	<h4>{{message}}: {{student_list|length}} results</h4>
 {% if student_list %}
 	<div id="directory">
+		<h4>{{message}}: {{student_list|length}} results</h4>
 		<table>
 			<tr>
 				<th colspan="2">Name</th>

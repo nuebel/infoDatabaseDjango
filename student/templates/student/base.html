@@ -23,11 +23,11 @@
 		<div class="clearing"></div>
 		<div id="sort_links">
 			Sort by:&nbsp;
-        	<a href="#" class="sorter" id="sorter_lastname">Last Name</a>
-        	&nbsp;|&nbsp;<a href="#" class="sorter" id="sorter_firstname">First Name</a>
-        	&nbsp;|&nbsp;<a href="#" class="sorter" id="sorter_schoolyear">Class</a>
-        	&nbsp;|&nbsp;<a href="#" class="sorter" id="sorter_color">Family Group</a>
-			&nbsp;|&nbsp;<a href="#" class="sorter" id="sorter_address">Address</a>
+        	<a href="#" class="sorter {% if request.session.sort_by == 'last_name' %}current{% endif %}" id="sorter_lastname">Last Name</a>
+        	&nbsp;|&nbsp;<a href="#" class="sorter {% if request.session.sort_by == 'first_name' %}current{% endif %}" id="sorter_firstname">First Name</a>
+        	&nbsp;|&nbsp;<a href="#" class="sorter {% if request.session.sort_by == 'school_year' %}current{% endif %}" id="sorter_schoolyear">Class</a>
+        	&nbsp;|&nbsp;<a href="#" class="sorter {% if request.session.sort_by == 'color' %}current{% endif %}" id="sorter_color">Family Group</a>
+			&nbsp;|&nbsp;<a href="#" class="sorter {% if request.session.sort_by == 'address' %}current{% endif %}" id="sorter_address">Address</a>
 		</div>
 	</div>
 	<div id="right">
@@ -35,18 +35,18 @@
 			<h3>Search the database</h3>
 			<form name="searchForm" action="{% url 'student:search' %}" method="post">
 				{% csrf_token %}
-				<div id="searchFor">For:&nbsp;<input type="text" name="search_text" id="search_text"/></div>
+				<div id="searchFor">For:&nbsp;<input type="text" name="search_text" id="search_text" value="{{ request.session.search_text }}"/></div>
                         <div id="searchIn">In:&nbsp<select name="search_field" id="search_field">
-                            <option value="last_name">Last Name</option>
-                            <option value="first_name">First Name</option>
-                            <option value="email">Email</option>
-                            <option value="color">Family Group</option>
-                            <option value="school_year">Class</option>
-                            <option value="dorm">Dorm</option>
-                            <option value="homeAdd">Home Address</option>
-                            <option value="major">Major</option>
-                            <option value="church">Church</option>
-                            <option value="other">Notes</option>
+                            <option value="last_name" {% if request.session.search_field == 'last_name' %}selected="yes"{% endif %}>Last Name</option>
+                            <option value="first_name" {% if request.session.search_field == 'first_name' %}selected="yes"{% endif %}>First Name</option>
+                            <option value="email" {% if request.session.search_field == 'email' %}selected="yes"{% endif %}>Email</option>
+                            <option value="color" {% if request.session.search_field == 'color' %}selected="yes"{% endif %}>Family Group</option>
+                            <option value="school_year" {% if request.session.search_field == 'school_year' %}selected="yes"{% endif %}>Class</option>
+                            <option value="dorm" {% if request.session.search_field == 'dorm' %}selected="yes"{% endif %}>Dorm</option>
+                            <option value="homeAdd" {% if request.session.search_field == 'homeAdd' %}selected="yes"{% endif %}>Home Address</option>
+                            <option value="major" {% if request.session.search_field == 'major' %}selected="yes"{% endif %}>Major</option>
+                            <option value="church" {% if request.session.search_field == 'church' %}selected="yes"{% endif %}>Church</option>
+                            <option value="other" {% if request.session.search_field == 'other' %}selected="yes"{% endif %}>Notes</option>
                         </select></div>
 				<input type="submit" value="Search">
 			</form>
