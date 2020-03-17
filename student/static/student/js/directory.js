@@ -13,14 +13,11 @@ $(".sorter").click( function(event) {
 	else if ($(this).attr('id') == "sorter_address") sort_by = "address";
 	console.log(`Sorting results by ${sort_by}`);
 
-	var search_field = "last_name";
-	var search_text = "";
-
 	$.ajax({
 		context: this,
 		type : 'GET',
 		url : '/student/ajax_searchsort',
-		data : "search_field=" + search_field + "&search_text=" +  search_text + "&sort_by=" + sort_by
+		data : "sort_by=" + sort_by
 	})
 		.done(function( data ) {
 			//Replace the directory div with the Ajax data
