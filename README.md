@@ -20,7 +20,7 @@ This is a rewrite of my [PHP student information database](https://github.com/nu
 - [x] Add Student Records
 - [x] Searching
 - [x] Sorting with Ajax
-- [ ] Sorting on Searches
+- [x] Sorting on Searches
 - [x] Delete Student Records
 - [x] Edit Student Records
 - [ ] Student Addresses
